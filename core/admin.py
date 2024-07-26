@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Product, Blog, Category
+from .models import Product, Blog, Category, Marca
 admin.site.register(Product)
 
 #admin.site.register(Blog)
@@ -15,3 +15,8 @@ class Blog(admin.ModelAdmin):
 class Category(admin.ModelAdmin):
     list_display = ['cat_name', 'slug']
     search_fields = ['cat_name']
+
+@admin.register(Marca)
+class Marca(admin.ModelAdmin):
+    list_display = ['mac_name', 'slug']
+    search_fields = ['mac_name']    

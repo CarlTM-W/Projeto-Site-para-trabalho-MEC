@@ -3,7 +3,7 @@ from core.models import Product, Blog
 
 def index (request):
     data = {
-        'title': 'Venha conhecer Nossa cafeteria: Onde Cada Xícara Conta uma História Miauravilhosa',
+        'title': 'TurboBrasil - Home',
         'languages': ['Python', 'Java', 'C#', 'JavaScript'],
         'news': [
             {
@@ -31,6 +31,7 @@ def produtos (request):
 
     data = {
         'product': product,
+        'title': 'TurboBrasil - Os melhores preços do Brasil | TurboBrasil',
     }
     return render(request, 'produtos.html', data)
 
@@ -38,6 +39,7 @@ def contato (request):
         data = {
         'courses': 'Programação de Computadores no SENAC GUA',
         'languages': ['Python', 'Java', 'C#', 'JavaScript'],
+        'title': 'Contato | TurboBrasil ',
     }
         return render(request, 'about.html', data)	
 
@@ -50,7 +52,7 @@ def blogs(request):
 
     data = {
         'blog': blog,
-        'title': 'Blog Django'
+        'title': 'TurboBrasil - Venha nos conhecer! | TurboBrasil'
     }
     return render(request, 'blogs.html', data)
 

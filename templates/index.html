@@ -1,39 +1,61 @@
+{% extends '_main.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
 
-	<link rel="stylesheet" href="{% static 'css/index.css' %}">
-	<link rel="stylesheet" href="{% static 'bootstrap5/css/bootstrap.min.css' %}">
-
-</head>
-
-<body>
-
-    {% include 'menu.html' %}
+    <style>
+        .carousel-caption h1 {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 700;
+          font-style: italic;
+        }
+    
+        .corvette {
+          color: red;
+        }
+    
+        .koenigsegg {
+          color: yellow;
+        }
+    
+        .lamborghini {
+          color: orange;
+        }
+      </style>
 
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="{% static 'images/banner-1.jpg' %}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-none d-md-block" >
                     <h1>Corvette C8</h1>
+                    <p>O Corvette C8, a última inovação da icônica marca Chevrolet, redefine o conceito de esportividade. Introduzido em 2020, este modelo marca uma grande mudança com a adoção do motor central-traseiro, uma configuração que melhora a dinâmica de condução e o equilíbrio. Equipado com um robusto motor V8 de 6.2 litros, o C8 entrega impressionantes 495 cavalos de potência, proporcionando acelerações e respostas ágeis que encantam entusiastas e pilotos.
+                        <br>
+                        Com um preço médio de R$ 1.200.000,00, o Corvette C8 oferece um desempenho excepcional a um valor relativamente acessível para um supercarro. Além de sua mecânica poderosa, o C8 se destaca por seu design futurista, com linhas arrojadas e uma aerodinâmica otimizada. O interior é igualmente impressionante, combinando conforto e tecnologia de ponta, com uma interface intuitiva e materiais de alta qualidade.
+                        <br>
+                        A Chevrolet, parte da General Motors, tem uma longa história de inovação no mercado automotivo, com o Corvette sendo um dos pilares dessa tradição. Com o C8, a marca reafirma seu compromisso com a excelência e a emoção ao dirigir, tornando-o uma escolha destacada entre os esportivos modernos.</p>
                   </div>
             </div>
             <div class="carousel-item">
                 <img src="{% static 'images/banner-2.jpg' %}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h1>Koenigsegg Jesko</h1>
+                    <p>O Koenigsegg Jesko, fabricado na Suécia, é uma obra-prima da engenharia automotiva e um dos supercarros mais exclusivos do planeta. Lançado em 2019, o Jesko é projetado para desafiar os limites da performance, com um motor V8 biturbo de 5.0 litros que desenvolve impressionantes 1.280 cavalos de potência quando abastecido com combustível E85. Este poder colossal é combinado com uma aerodinâmica avançada e um sistema de transmissão de última geração, resultando em um veículo que pode atingir velocidades extraordinárias.
+                        <br>
+                        Com um preço médio de cerca de R$ 30.000.000,00, o Jesko é verdadeiramente uma joia rara no mundo dos supercarros, com apenas 125 unidades planejadas para produção. Cada veículo é meticulosamente construído, refletindo o compromisso da Koenigsegg com a inovação e a exclusividade. O design do Jesko é futurista e agressivo, com um interior que mistura luxo e tecnologia, garantindo uma experiência de condução sem igual.
+                        <br>
+                        A Koenigsegg, uma marca sueca de renome, é conhecida por sua abordagem ousada e criativa em relação ao design e à engenharia automotiva. Com o Jesko, a marca continua a desafiar as convenções e a estabelecer novos padrões no segmento de supercarros.</p>
                   </div>
             </div>
             <div class="carousel-item">
                 <img src="{% static 'images/banner-3.jpg' %}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h1>Lamborghini Aventador</h1>
+                    <p>Desde seu lançamento em 2011, o Lamborghini Aventador tem sido um símbolo de luxo e desempenho de alta octanagem. Equipado com um motor V12 de 6.5 litros, o Aventador produz impressionantes 730 cavalos de potência, oferecendo acelerações vertiginosas e uma experiência de condução verdadeiramente emocionante. Seu design inconfundível e agressivo é complementado por uma aerodinâmica refinada que maximiza o desempenho em alta velocidade.
+                        <br>
+                        Com um preço médio de R$ 4.500.000,00, o Aventador é uma declaração de prestígio e exclusividade. O interior do carro é um exemplo de opulência, com acabamentos de alta qualidade e uma tecnologia de bordo avançada que oferece conforto e conectividade. Cada detalhe é cuidadosamente projetado para criar uma experiência de condução que é ao mesmo tempo emocionante e luxuosa.
+                        <br>
+                        A Lamborghini, uma das marcas mais icônicas do grupo Volkswagen, é sinônimo de design arrojado e inovação técnica. O Aventador é um testamento ao compromisso da marca com a excelência, combinando engenharia de ponta com um estilo que define tendências no mundo dos supercarros.</p>
                   </div>
             </div>
         </div>
@@ -49,14 +71,25 @@
         </button>
     </div>
 
-  
+    <script>
+        function applyClassesBasedOnText() {
+          const headings = document.querySelectorAll('.carousel-caption h1');
+    
+          headings.forEach(h1 => {
+            const text = h1.textContent.trim().toLowerCase();
+            
+            if (text.includes('corvette')) {
+              h1.classList.add('corvette');
+            } else if (text.includes('koenigsegg')) {
+              h1.classList.add('koenigsegg');
+            } else if (text.includes('lamborghini')) {
+              h1.classList.add('lamborghini');
+            }
+          });
+        }
+    
 
-</body>
-
-<script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
-<script type="text/javascript" src="{% static 'bootstrap5/js/bootstrap.min.js' %}"></script>
-
-
-</html>
-
+        document.addEventListener('DOMContentLoaded', applyClassesBasedOnText);
+      </script>
+{% endblock %}
 

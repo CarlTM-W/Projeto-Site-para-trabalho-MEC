@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends '_main.html' %}
+{% block content %}
     <h2>
         {{ product.name }}
     </h2>
@@ -21,6 +15,16 @@
     <p>
         Categoria: {{ product.pro_category }}
     </p>
-    
-</body>
-</html>
+
+    <p>
+        Marca: {{ product.pro_mac }}
+    </p>
+
+    <p> 
+        Ano: {{ product.ano }}
+    </p>
+
+    <p>
+        {{ product.descricao }}
+    </p>
+{% endblock %}
