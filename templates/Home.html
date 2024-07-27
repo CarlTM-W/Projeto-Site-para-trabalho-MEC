@@ -1,0 +1,19 @@
+{% extends '_main.html' %}
+{% load static %}
+{% block content %}
+
+{% for review in Reviews%}
+<img src="{{ noticia.not_image.url }}" alt="{{ noticia.titulo }}" width="500">
+<a href="{% url 'News_single.html' noticia.slug %}">{{noticia.titulo}}</a>
+{%endfor%}
+
+{% for noticia in Noticias %}
+<h3>Noticia</h3>
+<img src="{{ noticia.not_image.url }}" alt="{{ noticia.titulo }}" width="500">
+<a href="{% url 'News_single.html' noticia.slug %}">{{noticia.titulo}}</a>
+
+<p>{{noticia.data}}</p>
+<hr>
+{%endfor%}
+{% endblock %}
+

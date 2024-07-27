@@ -1,60 +1,65 @@
 from django.shortcuts import render, get_object_or_404
 from core.models import Product, Blog
 
-def index (request):
+def Home (request):
     data = {
-        'title': 'TurboBrasil - Home',
-        'languages': ['Python', 'Java', 'C#', 'JavaScript'],
-        'news': [
+        'title': 'GameVibes - Home',
+        'Noticias': [
             {
-                'title': 'Nova versão do Django lançada!',
-                'subtitle': 'Confira as novidades da versão 3.0',
-                'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero ut imperdiet vehicula.'
+                
             },
             {
-                'title': 'Python é a linguagem do futuro',
-                'subtitle': 'Especialistas afirmam que Python está dominando o mercado',
-                'text': 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
+                
             },
             {
-                'title': 'JavaScript: O que esperar do ES10?',
-                'subtitle': 'Novas funcionalidades e melhorias na performance',
-                'text': 'Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
+                
             }
+        ],
+        'Reviews': [
+             Reviews.objects.all()
         ]
     }
     
-    return render(request, 'index.html', data)
+    return render(request, 'Reviews.html', data)
 
-def produtos (request):
-    product = Product.objects.all()
+def review (request):
+    data = {
+        'title': 'GameVibes - Home',
+        'Reviews': [
+           Reviews.objects.all()
+        ]
+    }
+    
+    return render(request, 'Reviews.html', data)
+
+def News (request):
+    Noticias = News.objects.all()
 
     data = {
-        'product': product,
-        'title': 'TurboBrasil - Os melhores preços do Brasil | TurboBrasil',
+        'title': 'Noticias | GameVibes',
     }
     return render(request, 'produtos.html', data)
 
-def contato (request):
+def Desconto (request):
         data = {
         'courses': 'Programação de Computadores no SENAC GUA',
         'languages': ['Python', 'Java', 'C#', 'JavaScript'],
-        'title': 'Contato | TurboBrasil ',
+        'title': 'Descontos | GameVibes ',
     }
-        return render(request, 'about.html', data)	
+        return render(request, 'Descontos.html', data)	
 
-def produto_single(request, id):
-    product = get_object_or_404(Product, id=id) # get_object_or_404(Products, id=id) -> Usado para recuperar um único objeto com base em um critério específico, como um ID único.
-    return render(request, 'produto_single.html', {'product': product})  
+def Desconto_single(request, id):
+    product = get_object_or_404(Product, id=id) 
+    return render(request, 'Descontos_single.html', {'desconto': product})  
 
-def blogs(request):
+def News_single(request):
     blog = Blog.objects.all()
 
     data = {
         'blog': blog,
         'title': 'TurboBrasil - Venha nos conhecer! | TurboBrasil'
     }
-    return render(request, 'blogs.html', data)
+    return render(request, 'News_single.html', data)
 
 
 

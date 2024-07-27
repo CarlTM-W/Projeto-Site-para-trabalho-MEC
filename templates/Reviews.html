@@ -1,0 +1,11 @@
+{% extends '_main.html' %}
+{% block content %}
+
+{%for review in Reviews %}
+<img src="{{ review.rev_image.url }}" alt="{{ review.rev_name }}" width="500">
+<p>
+    <a href="{% url 'Reviews_single.html' review.slug %}">{{review.name}}</a>
+</p>
+{%endfor%}
+
+{% endblock %}

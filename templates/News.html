@@ -1,0 +1,10 @@
+{% extends '_main.html' %}
+{%load static%}
+{% block content %}
+{%for noticia in Noticias %}
+<img src="{{ noticia.not_image.url }}" alt="{{ noticia.name }}" width="500">
+<p>
+    <a href="{% url 'News_single.html' noticia.slug %}">{{noticia.titulo}}</a>
+</p>
+{%endfor%}
+{%endblock%}

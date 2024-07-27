@@ -1,0 +1,15 @@
+{% extends '_main.html' %}
+{% block content %}
+
+<img src="{{ review.rev_image.url }}" alt="{{ review.name }}" width="500">
+
+<h1>
+    {{ review.name }}
+</h1>
+
+<p>
+    {{review.rev_desc}}
+</p>
+
+<hr>
+{% endblock %}
