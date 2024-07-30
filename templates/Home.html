@@ -1,19 +1,37 @@
 {% extends '_main.html' %}
 {% load static %}
 {% block content %}
+<h2>Notícias</h2>
+<div class="row">
+    {% for noticia in Noticias %}
+    <div class="col-md-4">
+        <a href="{% url 'News_single' noticia.slug %}" class="image-button">
+            <img src="{{ noticia.not_image.url }}" alt="{{ noticia.titulo }}" class="img-fluid">
+            <div class="overlay">
+                <div class="text">{{ noticia.titulo }}</div>
+            </div>
+        </a>
+        <p>{{ noticia.data }}</p>
+        <p><strong>Autor:</strong> {{ noticia.author }}</p>
+        <p><strong>Categoria:</strong> {{ noticia.category }}</p>
+    </div>
+    {% endfor %}
+</div>
 
-{% for review in Reviews%}
-<img src="{{ noticia.not_image.url }}" alt="{{ noticia.titulo }}" width="500">
-<a href="{% url 'News_single.html' noticia.slug %}">{{noticia.titulo}}</a>
-{%endfor%}
-
-{% for noticia in Noticias %}
-<h3>Noticia</h3>
-<img src="{{ noticia.not_image.url }}" alt="{{ noticia.titulo }}" width="500">
-<a href="{% url 'News_single.html' noticia.slug %}">{{noticia.titulo}}</a>
-
-<p>{{noticia.data}}</p>
-<hr>
-{%endfor%}
+<h2>Reviews</h2>
+<div class="row">
+    {% for review in Reviews %}
+    <div class="col-md-4">
+        <a href="{% url 'Reviews_single' review.slug %}" class="image-button">
+            <img src="{{ review.rev_image.url }}" alt="{{ review.name }}" class="img-fluid">
+            <div class="overlay">
+                <div class="text">{{ review.name }}</div>
+            </div>
+        </a>
+        <p>{{ review.data }}</p>
+        <p><strong>Autor:</strong> {{ review.author }}</p>
+        <p><strong>Categoria:</strong> {{ review.category }}</p>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
-

@@ -1,27 +1,10 @@
 {% extends '_main.html' %}
 {% block content %}
-
-<img src="{{ desconto.des_image.url }}" alt="{{ desconto.name }}" width="100">
-
-<h2>
-    {{ desconto.name }}
-</h2>
-
-<p>
-    Desconto no jogo: {{ desconto.game }}
-</p>
-
-<p>
-    Desconto de: {{ desconto.percent }} % !
-</p>
-
-<p>
-    Prazo: {{ desconto.prazo }}
-</p>
-
-<p>
-    Categoria: {{ desconto.desc_cat }}
-</p>
-
+<h2>{{ desconto.name }}</h2>
+<img src="{{ desconto.des_image.url }}" alt="{{ desconto.name }}" class="img-fluid">
+<p>Desconto no jogo: {{ desconto.game }}</p>
+<p>Desconto de: {{ desconto.percent }} %!</p>
+<p>Prazo: {{ desconto.prazo }}</p>
+<p>Categoria: {{ desconto.desc_cat }}</p>
 <hr>
 {% endblock %}

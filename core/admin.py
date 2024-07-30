@@ -1,22 +1,21 @@
 from django.contrib import admin
+from .models import Noticia, Review, Desconto
 
-# Register your models here.
-from .models import Product, Blog, Category, Marca
-admin.site.register(Product)
+class NoticiaAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'data', 'author', 'category')
+    search_fields = ('titulo', 'author', 'category')
+    prepopulated_fields = {'slug': ('titulo',)}
 
-#admin.site.register(Blog)
-@admin.register(Blog)
-class Blog(admin.ModelAdmin):
-    #form = BlogAdminForm # Estilização do Form Blog do Admin
-    list_display = ['mini_image', 'blo_title']
-    search_fields = ['blo_title']
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('name', 'data', 'author', 'category')
+    search_fields = ('name', 'author', 'category')
+    prepopulated_fields = {'slug': ('name',)}
 
-@admin.register(Category)
-class Category(admin.ModelAdmin):
-    list_display = ['cat_name', 'slug']
-    search_fields = ['cat_name']
+class DescontoAdmin(admin.ModelAdmin):
+    list_display = ('name', 'percent', 'prazo', 'desc_cat')
+    search_fields = ('name', 'desc_cat')
+    prepopulated_fields = {'slug': ('name',)}
 
-@admin.register(Marca)
-class Marca(admin.ModelAdmin):
-    list_display = ['mac_name', 'slug']
-    search_fields = ['mac_name']    
+admin.site.register(Noticia, NoticiaAdmin)
+admin.site.register(Review, ReviewAdmin)
+admin.site.register(Desconto, DescontoAdmin)

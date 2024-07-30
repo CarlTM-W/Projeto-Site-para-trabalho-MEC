@@ -1,10 +1,20 @@
 {% extends '_main.html' %}
-{%load static%}
+{% load static %}
 {% block content %}
-{%for noticia in Noticias %}
-<img src="{{ noticia.not_image.url }}" alt="{{ noticia.name }}" width="500">
-<p>
-    <a href="{% url 'News_single.html' noticia.slug %}">{{noticia.titulo}}</a>
-</p>
-{%endfor%}
-{%endblock%}
+<h2>Notícias</h2>
+<div class="row">
+    {% for noticia in Noticias %}
+    <div class="col-md-4">
+        <a href="{% url 'News_single' noticia.slug %}" class="image-button">
+            <img src="{{ noticia.not_image.url }}" alt="{{ noticia.name }}" class="img-fluid">
+            <div class="overlay">
+                <div class="text">{{ noticia.titulo }}</div>
+            </div>
+        </a>
+        <p>{{ noticia.data }}</p>
+        <p><strong>Autor:</strong> {{ noticia.author }}</p>
+        <p><strong>Categoria:</strong> {{ noticia.category }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

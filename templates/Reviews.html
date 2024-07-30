@@ -1,11 +1,19 @@
 {% extends '_main.html' %}
 {% block content %}
-
-{%for review in Reviews %}
-<img src="{{ review.rev_image.url }}" alt="{{ review.rev_name }}" width="500">
-<p>
-    <a href="{% url 'Reviews_single.html' review.slug %}">{{review.name}}</a>
-</p>
-{%endfor%}
-
+<h2>Reviews</h2>
+<div class="row">
+    {% for review in Reviews %}
+    <div class="col-md-4">
+        <a href="{% url 'Reviews_single' review.slug %}" class="image-button">
+            <img src="{{ review.rev_image.url }}" alt="{{ review.rev_name }}" class="img-fluid">
+            <div class="overlay">
+                <div class="text">{{ review.name }}</div>
+            </div>
+        </a>
+        <p>{{ review.data }}</p>
+        <p><strong>Autor:</strong> {{ review.author }}</p>
+        <p><strong>Categoria:</strong> {{ review.category }}</p>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

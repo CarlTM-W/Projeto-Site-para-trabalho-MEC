@@ -1,19 +1,16 @@
 from django.urls import path, include
-from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path
 from django.conf import settings
-#foi feito o importe do include acima
-
-#import das views index e contato criadas no core/views
-from core.views import index, contato, produtos, produto_single, blogs, blog_single
+from django.conf.urls.static import static
+from core import views
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('contato', contato, name='contato'),
-    path('produtos', produtos, name='produtos'),
-    path('produto/<int:id>/', produto_single, name='produto_single'),
-    path('blogs', blogs, name='blogs'),
-    path('blog/<slug:slug>/', blog_single, name='blog_single'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
+    path('', views.home, name='Home'),
+    path('descontos/', views.descontos_list, name='Descontos'),
+    path('descontos/<slug:slug>/', views.descontos_detail, name='Descontos_single'),
+    path('news/', views.news_list, name='News'),
+    path('news/<slug:slug>/', views.news_detail, name='News_single'),
+    path('reviews/', views.reviews_list, name='Reviews'),
+    path('reviews/<slug:slug>/', views.reviews_detail, name='Reviews_single'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

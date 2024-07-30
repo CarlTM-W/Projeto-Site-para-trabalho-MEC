@@ -1,69 +1,31 @@
 from django.shortcuts import render, get_object_or_404
-from core.models import Product, Blog
+from .models import Noticia, Review, Desconto
 
-def Home (request):
-    data = {
-        'title': 'GameVibes - Home',
-        'Noticias': [
-            {
-                
-            },
-            {
-                
-            },
-            {
-                
-            }
-        ],
-        'Reviews': [
-             Reviews.objects.all()
-        ]
-    }
-    
-    return render(request, 'Reviews.html', data)
+def home(request):
+    noticias = Noticia.objects.all()
+    reviews = Review.objects.all()
+    return render(request, 'Home.html', {'Noticias': noticias, 'Reviews': reviews})
 
-def review (request):
-    data = {
-        'title': 'GameVibes - Home',
-        'Reviews': [
-           Reviews.objects.all()
-        ]
-    }
-    
-    return render(request, 'Reviews.html', data)
+def descontos_list(request):
+    descontos = Desconto.objects.all()
+    return render(request, 'Descontos.html', {'Descontos': descontos})
 
-def News (request):
-    Noticias = News.objects.all()
+def descontos_detail(request, slug):
+    desconto = get_object_or_404(Desconto, slug=slug)
+    return render(request, 'Descontos_single.html', {'desconto': desconto})
 
-    data = {
-        'title': 'Noticias | GameVibes',
-    }
-    return render(request, 'produtos.html', data)
+def news_list(request):
+    noticias = Noticia.objects.all()
+    return render(request, 'News.html', {'Noticias': noticias})
 
-def Desconto (request):
-        data = {
-        'courses': 'Programação de Computadores no SENAC GUA',
-        'languages': ['Python', 'Java', 'C#', 'JavaScript'],
-        'title': 'Descontos | GameVibes ',
-    }
-        return render(request, 'Descontos.html', data)	
+def news_detail(request, slug):
+    noticia = get_object_or_404(Noticia, slug=slug)
+    return render(request, 'News_single.html', {'noticia': noticia})
 
-def Desconto_single(request, id):
-    product = get_object_or_404(Product, id=id) 
-    return render(request, 'Descontos_single.html', {'desconto': product})  
+def reviews_list(request):
+    reviews = Review.objects.all()
+    return render(request, 'Reviews.html', {'Reviews': reviews})
 
-def News_single(request):
-    blog = Blog.objects.all()
-
-    data = {
-        'blog': blog,
-        'title': 'TurboBrasil - Venha nos conhecer! | TurboBrasil'
-    }
-    return render(request, 'News_single.html', data)
-
-
-
-def blog_single(request, slug):
-    blog = get_object_or_404(Blog, slug=slug)
-    return render(request, 'blog_single.html', {'blog': blog})
-
+def reviews_detail(request, slug):
+    review = get_object_or_404(Review, slug=slug)
+    return render(request, 'Reviews_single.html', {'review': review})
