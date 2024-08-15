@@ -1,0 +1,16 @@
+{% extends '_main.html' %}
+{% block content %}
+<h2>Fórmulas</h2>
+<div class="row">
+    {% for formula in formulas %}
+    <div class="col-md-4">
+        <a href="{% url 'detalhe_formula' formula.id %}" class="image-button">
+            <img src="{{ formula.imagem.url }}" alt="{{ formula.nome }}" class="img-fluid">
+            <div class="overlay">
+                <div class="text">{{ formula.nome }}</div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

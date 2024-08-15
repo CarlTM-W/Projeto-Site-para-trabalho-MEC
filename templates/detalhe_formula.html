@@ -1,0 +1,6 @@
+{% extends '_main.html' %}
+{% block content %}
+<h2>Detalhes da Fórmula</h2>
+<img src="{{ formula.imagem.url }}" alt="{{ formula.nome }}" class="img-fluid">
+<p>{{ formula.descricao }}</p>
+{% endblock %}

@@ -1,31 +1,26 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Noticia, Review, Desconto
+from .models import TipoCorreia, Formula
 
 def home(request):
-    noticias = Noticia.objects.all()
-    reviews = Review.objects.all()
-    return render(request, 'Home.html', {'Noticias': noticias, 'Reviews': reviews})
+    tipos_correia = TipoCorreia.objects.all()
+    formulas = Formula.objects.all()
+    return render(request, 'home.html', {'tipos_correia': tipos_correia, 'formulas': formulas})
 
-def descontos_list(request):
-    descontos = Desconto.objects.all()
-    return render(request, 'Descontos.html', {'Descontos': descontos})
+def lista_tipos_correia(request):
+    tipos_correia = TipoCorreia.objects.all()
+    return render(request, 'lista_tipos_correia.html', {'tipos_correia': tipos_correia})
 
-def descontos_detail(request, slug):
-    desconto = get_object_or_404(Desconto, slug=slug)
-    return render(request, 'Descontos_single.html', {'desconto': desconto})
+def detalhe_tipo_correia(request, tipo_correia_id):
+    tipo_correia = get_object_or_404(TipoCorreia, id=tipo_correia_id)
+    return render(request, 'detalhe_tipo_correia.html', {'tipo_correia': tipo_correia})
 
-def news_list(request):
-    noticias = Noticia.objects.all()
-    return render(request, 'News.html', {'Noticias': noticias})
+def lista_formulas(request):
+    formulas = Formula.objects.all()
+    return render(request, 'lista_formulas.html', {'formulas': formulas})
 
-def news_detail(request, slug):
-    noticia = get_object_or_404(Noticia, slug=slug)
-    return render(request, 'News_single.html', {'noticia': noticia})
+def detalhe_formula(request, formula_id):
+    formula = get_object_or_404(Formula, id=formula_id)
+    return render(request, 'detalhe_formula.html', {'formula': formula})
 
-def reviews_list(request):
-    reviews = Review.objects.all()
-    return render(request, 'Reviews.html', {'Reviews': reviews})
-
-def reviews_detail(request, slug):
-    review = get_object_or_404(Review, slug=slug)
-    return render(request, 'Reviews_single.html', {'review': review})
+def conclusao(request):
+    return render(request, 'conclusao.html')

@@ -4,13 +4,13 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from core import views
+from . import views
 
 urlpatterns = [
-    path('', views.home, name='Home'),
-    path('descontos/', views.descontos_list, name='Descontos'),
-    path('descontos/<slug:slug>/', views.descontos_detail, name='Descontos_single'),
-    path('news/', views.news_list, name='News'),
-    path('news/<slug:slug>/', views.news_detail, name='News_single'),
-    path('reviews/', views.reviews_list, name='Reviews'),
-    path('reviews/<slug:slug>/', views.reviews_detail, name='Reviews_single'),
+    path('', views.home, name='home'),
+    path('tipos-correia/', views.lista_tipos_correia, name='lista_tipos_correia'),
+    path('tipos-correia/<int:tipo_correia_id>/', views.detalhe_tipo_correia, name='detalhe_tipo_correia'),
+    path('formulas/', views.lista_formulas, name='lista_formulas'),
+    path('formulas/<int:formula_id>/', views.detalhe_formula, name='detalhe_formula'),
+    path('conclusao/', views.conclusao, name='conclusao'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

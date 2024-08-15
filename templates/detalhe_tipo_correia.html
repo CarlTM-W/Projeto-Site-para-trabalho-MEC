@@ -1,0 +1,6 @@
+{% extends '_main.html' %}
+{% block content %}
+<h2>{{ tipo_correia.nome }}</h2>
+<img src="{{ tipo_correia.imagem.url }}" alt="{{ tipo_correia.nome }}" class="img-fluid">
+<p>{{ tipo_correia.descricao }}</p>
+{% endblock %}

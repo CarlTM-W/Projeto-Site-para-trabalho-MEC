@@ -1,37 +1,61 @@
 {% extends '_main.html' %}
 {% load static %}
 {% block content %}
-<h2>Notícias</h2>
-<div class="row">
-    {% for noticia in Noticias %}
-    <div class="col-md-4">
-        <a href="{% url 'News_single' noticia.slug %}" class="image-button">
-            <img src="{{ noticia.not_image.url }}" alt="{{ noticia.titulo }}" class="img-fluid">
-            <div class="overlay">
-                <div class="text">{{ noticia.titulo }}</div>
-            </div>
-        </a>
-        <p>{{ noticia.data }}</p>
-        <p><strong>Autor:</strong> {{ noticia.author }}</p>
-        <p><strong>Categoria:</strong> {{ noticia.category }}</p>
+<div class="content-wrapper">
+    <div class="section-title">
+        <h2>Tipos de Correia</h2>
+        <hr>
     </div>
-    {% endfor %}
-</div>
+    <div id="carouselExampleCorreias" class="carousel slide">
+        <div class="carousel-inner">
+            {% for correia in tipos_correia %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ correia.imagem.url }}" class="d-block w-100" alt="{{ correia.nome }}">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption-text">
+                        <h5>{{ correia.nome }}</h5>
+                        <p>{{ correia.descricao }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCorreias" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCorreias" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
-<h2>Reviews</h2>
-<div class="row">
-    {% for review in Reviews %}
-    <div class="col-md-4">
-        <a href="{% url 'Reviews_single' review.slug %}" class="image-button">
-            <img src="{{ review.rev_image.url }}" alt="{{ review.name }}" class="img-fluid">
-            <div class="overlay">
-                <div class="text">{{ review.name }}</div>
-            </div>
-        </a>
-        <p>{{ review.data }}</p>
-        <p><strong>Autor:</strong> {{ review.author }}</p>
-        <p><strong>Categoria:</strong> {{ review.category }}</p>
+    <div class="section-title">
+        <h2>Fórmulas</h2>
+        <hr>
     </div>
-    {% endfor %}
+    <div id="carouselExampleFormulas" class="carousel slide">
+        <div class="carousel-inner">
+            {% for formula in formulas %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ formula.imagem.url }}" class="d-block w-100" alt="{{ formula.nome }}">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-caption-text">
+                        <h5>{{ formula.nome }}</h5>
+                        <p>{{ formula.descricao }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFormulas" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFormulas" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 </div>
 {% endblock %}

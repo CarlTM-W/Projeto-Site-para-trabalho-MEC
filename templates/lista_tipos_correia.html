@@ -1,0 +1,16 @@
+{% extends '_main.html' %}
+{% block content %}
+<h2>Tipos de Correia</h2>
+<div class="row">
+    {% for tipo_correia in tipos_correia %}
+    <div class="col-md-4">
+        <a href="{% url 'detalhe_tipo_correia' tipo_correia.id %}" class="image-button">
+            <img src="{{ tipo_correia.imagem.url }}" alt="{{ tipo_correia.nome }}" class="img-fluid">
+            <div class="overlay">
+                <div class="text">{{ tipo_correia.nome }}</div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
