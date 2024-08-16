@@ -1,6 +1,26 @@
 {% extends '_main.html' %}
 {% block content %}
-<h2>Fórmulas</h2>
+<style>
+    .formula {
+        font-size: 3rem;
+        color: #2bff00;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        transition: text-shadow 0.3s ease;
+    }
+
+    .formula:hover {
+        text-shadow: 0 0 10px rgba(21, 190, 49, 0.7);
+        transition: transform 0.3s ease;
+        transform: scale(1.1);
+    }
+</style>
+
+<div style="margin-top: 100px;"class="section-title">
+    <h2 class="formula">Fórmulas</h2>
+    <hr>
+</div>
+
 <div class="row">
     {% for formula in formulas %}
     <div class="col-md-4">
